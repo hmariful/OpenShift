@@ -1,0 +1,21 @@
+kind: LDAPSyncConfig
+apiVersion: v1
+url: ldap://dc1.gbpl.local
+bindDN: 'svc_ocpadmin@gbpl.local'
+bindPassword: "Tr@$h!ng0291"
+augmentedActiveDirectory:
+    groupsQuery:
+        baseDN: "OU=OCP,OU=GBPL,DC=gbpl,DC=local"
+        scope: sub
+        derefAliases: never
+        pageSize: 0
+    groupUIDAttribute: dn
+    groupNameAttributes: [ cn ]
+    usersQuery:
+        baseDN: "OU=GBPL,DC=gbpl,DC=local"
+        scope: sub
+        derefAliases: never
+        filter: (objectclass=person)
+        pageSize: 0
+    userNameAttributes: [ mail ]
+    groupMembershipAttributes: [ memberOf ]
