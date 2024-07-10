@@ -1,21 +1,21 @@
 kind: LDAPSyncConfig
 apiVersion: v1
-url: ldap://dc1.gbpl.local
-bindDN: 'svc_ocpadmin@gbpl.local'
-bindPassword: "Tr@$h!ng0291"
+url: ldap://dc1.gbpl.local #LDAP URL | i.e. Active Directory Server address
+bindDN: 'svc_ocpadmin@gbpl.local' #Service Account with Domain Admins Group Membership
+bindPassword: "Tr@$h!ng0291" #Password of Service Account
 augmentedActiveDirectory:
-    groupsQuery:
-        baseDN: "OU=OCP,OU=GBPL,DC=gbpl,DC=local"
-        scope: sub
-        derefAliases: never
-        pageSize: 0
-    groupUIDAttribute: dn
-    groupNameAttributes: [ cn ]
-    usersQuery:
-        baseDN: "OU=GBPL,DC=gbpl,DC=local"
-        scope: sub
-        derefAliases: never
-        filter: (objectclass=person)
-        pageSize: 0
-    userNameAttributes: [ mail ]
-    groupMembershipAttributes: [ memberOf ]
+  groupsQuery:
+    baseDN: "OU=OCP,OU=GBPL,DC=gbpl,DC=local" #Distinguised Name of the OU under which target Group available
+    scope: sub
+    derefAliases: never
+    pageSize: 0
+  groupUIDAttribute: dn
+  groupNameAttributes: [cn]
+  usersQuery:
+    baseDN: "OU=GBPL,DC=gbpl,DC=local" #Distinguised Name of the OU under which target Group available
+    scope: sub
+    derefAliases: never
+    filter: (objectclass=person)
+    pageSize: 0
+  userNameAttributes: [mail]
+  groupMembershipAttributes: [memberOf]
